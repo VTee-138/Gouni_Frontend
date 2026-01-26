@@ -1,10 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
-import CourseCard from "../Course/CourseCard";
-import hsa_img from "../../images/KHOAHOCHSA.jpg";
-import tsa_img from "../../images/thi-tsa.png";
-import thpt_img from "../../images/thpt.png";
-import Header from "../Header/Header";
+
 import { toast } from "react-toastify";
 import { Stack, Typography } from "@mui/material";
 import PaginationCustom from "../PaginationCustom";
@@ -146,7 +142,6 @@ export default function ExamRoomsPage() {
 
   return (
     <div className="min-h-screen bg-gray-50">
-      <Header />
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
         {/* Breadcrumb */}
         <div className="text-sm text-gray-500 mb-4">

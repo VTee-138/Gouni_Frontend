@@ -1,6 +1,4 @@
 import React from "react";
-import hsa_img from "../../images/KHOAHOCHSA.jpg";
-import tsa_img from "../../images/thi-tsa.png";
 import { Link } from "react-router-dom";
 import { Star, Clock, Users } from "lucide-react";
 
@@ -13,13 +11,6 @@ export default function CourseCard({
   discountPercent,
   isBuy,
 }) {
-  // Tách số từ chuỗi giá (ví dụ: "Giá từ 3.900.000đ" => 3900000)
-  const parsePrice = (str) => {
-    if (!str) return 0;
-    const match = str.replace(/[^\d]/g, "");
-    return Number(match);
-  };
-
   const hasDiscount = discountPercent && discountPercent < 0;
   const discount = hasDiscount ? Math.abs(discountPercent) : 0;
   const finalPrice = hasDiscount
@@ -35,7 +26,7 @@ export default function CourseCard({
         {/* Image Container - Thu nhỏ chiều cao */}
         <div className="relative overflow-hidden h-40 sm:h-28 md:h-32 flex-shrink-0">
           <img
-            src={imgUrl || hsa_img}
+            src={imgUrl}
             alt={type}
             className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
           />

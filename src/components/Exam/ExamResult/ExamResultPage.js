@@ -1,8 +1,6 @@
 import React, { useEffect, useMemo, useState } from "react";
 import { Typography, Box, Stack, useMediaQuery } from "@mui/material";
-import Header from "../../Header/Header";
 import {
-  getResultAll,
   getResultById,
   getResultHistory,
 } from "../../../services/TestService";
@@ -16,11 +14,9 @@ import TestDS from "../ExamTest/TestDS";
 import TestKT from "../ExamTest/TestKT";
 import TestTLN from "../ExamTest/TestTLN";
 import TestTLN_M from "../ExamTest/TestTLN_M";
-const USERID = "userId";
 
 function ExamResultPage() {
   const { id } = useParams();
-  const isDesktop = useMediaQuery("(max-width:1024px)");
   const isDesktop992 = useMediaQuery("(max-width:992px)");
   const isDesktop768 = useMediaQuery("(max-width:768px)");
   const [loading, setLoading] = useState(false);
@@ -77,7 +73,6 @@ function ExamResultPage() {
       direction={"column"}
       gap={"40px"}
     >
-      <Header />
 
       {/* <ResultTable resultDetail={resultDetail} resultAll={resultAll} /> */}
 

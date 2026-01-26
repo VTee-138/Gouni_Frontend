@@ -1,6 +1,4 @@
 import React from "react";
-import hsa_img from "../../images/KHOAHOCHSA.jpg";
-import tsa_img from "../../images/thi-tsa.png";
 import { Link } from "react-router-dom";
 import { BookOpen, FileQuestion, Users, Clock } from "lucide-react";
 
@@ -26,7 +24,7 @@ export default function ExamRoomCard({
         {/* Image Container - Cải thiện aspect ratio */}
         <div className="relative overflow-hidden h-32 flex-shrink-0">
           <img
-            src={imgUrl || hsa_img}
+            src={imgUrl}
             alt={title?.code}
             className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
           />

@@ -1,4 +1,4 @@
-import jwtDecode from "jwt-decode";
+import { jwtDecode } from "jwt-decode";
 import { get, post } from "../common/apiClient";
 
 const PATH_AUTH = "/auth";

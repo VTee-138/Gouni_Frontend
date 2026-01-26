@@ -1,4 +1,4 @@
-import Header from "../Header/Header";
+
 import { Zap, TrendingUp, BookOpen, ArrowRight } from "lucide-react";
 import Exams from "./Exams";
 import { Link, useParams } from "react-router-dom";
@@ -32,8 +32,6 @@ const ExamPage = () => {
   return (
     <>
       <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-50">
-        <Header />
-
         <div className="max-w-7xl mx-auto px-2 sm:px-2 lg:px-8 py-8">
           <div className="flex flex-col xl:flex-row gap-8">
             {/* Main Content */}

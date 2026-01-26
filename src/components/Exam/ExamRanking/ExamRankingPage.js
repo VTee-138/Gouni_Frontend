@@ -11,7 +11,6 @@ import {
   Stack,
   useMediaQuery,
 } from "@mui/material";
-import Header from "../../Header/Header";
 import { getResultAll, getResultById } from "../../../services/TestService";
 import { toast } from "react-toastify";
 import Loading from "../../Loading";
@@ -93,7 +92,6 @@ function ExamRankingPage() {
       direction={"column"}
       gap={"40px"}
     >
-      <Header />
       <Stack sx={{ width: "100%", padding: 2 }} gap={"20px"}>
         <Typography variant="h5" component="h3" gutterBottom align="center">
           Kết Quả Của Bạn

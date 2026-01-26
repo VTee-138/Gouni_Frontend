@@ -1,9 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
-import hsa_img from "../../images/KHOAHOCHSA.jpg";
-import tsa_img from "../../images/thi-tsa.png";
-import thpt_img from "../../images/thpt.png";
-import Header from "../Header/Header";
+
 import { toast } from "react-toastify";
 import { Stack, Typography } from "@mui/material";
 import PaginationCustom from "../PaginationCustom";
@@ -154,28 +151,31 @@ export default function DocumentsPage() {
   };
 
   return (
-    <div className="min-h-screen bg-gray-50">
-      <Header />
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
+    <div className="min-h-screen bg-white">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-24 pb-12">
         {/* Breadcrumb */}
-        <div className="text-sm text-gray-500 mb-4">
-          <Link to="/" className="hover:underline transition-colors">
+        <div className="text-sm text-gray-600 mb-6">
+          <Link to="/" className="hover:text-red-600 transition-colors">
             Trang chủ
-          </Link>{" "}
-          / <span className="text-gray-800 font-medium">Tài liệu</span>
+          </Link>
+          <span className="mx-2">/</span>
+          <span className="text-gray-900 font-medium">Tài liệu</span>
         </div>
 
         {/* Header với Mobile Menu Button */}
-        <div className="flex items-center justify-between mb-6">
-          <h1 className="text-2xl sm:text-3xl font-bold text-gray-800">
-            TÀI LIỆU
-          </h1>
+        <div className="flex items-center justify-between mb-8">
+          <div>
+            <h1 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-2">
+              Thư viện tài liệu
+            </h1>
+            <p className="text-gray-600">Khám phá kho tài liệu học tập phong phú</p>
+          </div>
           <button
             onClick={toggleSidebar}
-            className="lg:hidden bg-red-600 text-white p-3 rounded-lg shadow-lg hover:bg-red-700 transition-colors flex items-center gap-2"
+            className="lg:hidden bg-red-600 text-white p-3 rounded-xl hover:bg-red-700 transition-colors flex items-center gap-2 cursor-pointer"
           >
             <Menu size={20} />
-            <span className="hidden sm:inline">Danh mục</span>
+            <span className="hidden sm:inline">Lọc</span>
           </button>
         </div>
 
@@ -191,8 +191,8 @@ export default function DocumentsPage() {
           {/* Sidebar */}
           <div
             className={`
-    bg-white shadow-lg lg:rounded-2xl p-6 
-    fixed lg:static top-16 lg:top-0 left-0 bottom-0 lg:inset-y-0 z-50 w-80 lg:w-auto
+    bg-white shadow-xl lg:rounded-2xl p-6 border border-gray-100
+    fixed lg:static top-20 lg:top-0 left-0 bottom-0 lg:inset-y-0 z-50 w-80 lg:w-auto
     transform transition-transform duration-300 ease-in-out
     ${isSidebarOpen ? "translate-x-0" : "-translate-x-full lg:translate-x-0"}
     overflow-y-auto lg:max-h-none

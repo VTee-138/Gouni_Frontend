@@ -28,7 +28,7 @@ import {
   Language as WebsiteIcon,
 } from "@mui/icons-material";
 import { toast } from "react-toastify";
-import Header from "../Header/Header";
+
 import Footer from "../Footer/Footer";
 import ContactService from "../../services/ContactService";
 import { Link } from "react-router-dom";
@@ -145,7 +145,7 @@ const ContactPage = () => {
     {
       icon: <EmailIcon className="text-green-500" />,
       title: "Email",
-      content: "gouni.contact@gmail.com",
+      content: "86HSK.contact@gmail.com",
       description: "Phản hồi trong 24 giờ",
     },
     {
@@ -166,7 +166,7 @@ const ContactPage = () => {
     {
       icon: <FacebookIcon />,
       name: "Facebook",
-      url: "https://www.facebook.com/groups/tsahsathpt.gouni",
+      url: "https://www.facebook.com/groups/tsahsathpt.86HSK",
       color: "from-blue-600 to-blue-700",
     },
     {
@@ -191,8 +191,6 @@ const ContactPage = () => {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-purple-50">
-      <Header />
-
       {/* Hero Section */}
       <Box className="bg-gradient-to-r from-blue-600 via-purple-600 to-indigo-700 text-white py-20">
         <Container maxWidth="lg">
@@ -436,7 +434,7 @@ const ContactPage = () => {
                         Email
                       </Typography>
                       <Typography variant="body2" color="textSecondary">
-                        gouni.contact@gmail.com
+                        86HSK.contact@gmail.com
                       </Typography>
                     </div>
                   </div>
@@ -517,7 +515,7 @@ const ContactPage = () => {
                 allowFullScreen=""
                 loading="lazy"
                 referrerPolicy="no-referrer-when-downgrade"
-                title="Bản đồ vị trí GOUNI - 295 Thanh Nhàn, Hai Bà Trưng, Hà Nội"
+                title="Bản đồ vị trí 86HSK - 295 Thanh Nhàn, Hai Bà Trưng, Hà Nội"
               />
             </div>
 

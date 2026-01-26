@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import { Clock, BookOpen, Monitor, Smartphone, Download } from "lucide-react";
-import Header from "../Header/Header";
+
 import { getCourseById } from "../../services/CourseService";
 import { toast } from "react-toastify";
 import Loading from "../Loading";
@@ -64,20 +64,19 @@ export default function CourseDetailPage() {
   if (loading) return <Loading />;
   return (
     <div>
-      <Header />
-      <div className="bg-gray-50 min-h-screen">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
-          {/* Breadcrumb */}
-          <div className="text-sm text-gray-500 mb-2">
-            <Link to="/" className="hover:underline">
-              Trang chủ
-            </Link>
-            {" / "}
-            <Link to="/courses" className="hover:underline">
-              Khóa học
-            </Link>
-            {" / "}
-            <span className="text-gray-800 font-semibold">
+    <div className="min-h-screen bg-white">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-24 pb-12">
+        {/* Breadcrumb */}
+        <div className="text-sm text-gray-600 mb-6">
+          <Link to="/" className="hover:text-red-600 transition-colors">
+            Trang chủ
+          </Link>
+          <span className="mx-2">/</span>
+          <Link to="/courses" className="hover:text-red-600 transition-colors">
+            Khóa học
+          </Link>
+          <span className="mx-2">/</span>
+          <span className="text-gray-900 font-medium">
               {courseData.title?.text}
             </span>
           </div>
@@ -145,11 +144,11 @@ export default function CourseDetailPage() {
                   <button
                     onClick={handleApplyDiscount}
                     disabled={courseData?.isBuy}
-                    className={`px-3 py-1 rounded text-sm font-semibold transition
+                    className={`px-4 py-2 rounded-xl text-sm font-semibold transition-colors
                       ${
                         courseData?.isBuy
-                          ? "bg-gray-400 text-white cursor-not-allowed"
-                          : "bg-[#cd1628] text-white hover:bg-red-700 cursor-pointer"
+                          ? "bg-gray-300 text-gray-500 cursor-not-allowed"
+                          : "bg-red-600 text-white hover:bg-red-700 cursor-pointer"
                       }
                     `}
                   >
@@ -167,11 +166,11 @@ export default function CourseDetailPage() {
                 )}
 
                 <button
-                  className={`w-full font-bold py-2 rounded transition mb-4
+                  className={`w-full font-semibold py-3 rounded-xl transition-colors mb-6
                     ${
                       courseData?.isBuy
-                        ? "bg-gray-400 text-white cursor-not-allowed"
-                        : "bg-[#cd1628] text-white hover:bg-[#cd1628] cursor-pointer"
+                        ? "bg-gray-300 text-gray-500 cursor-not-allowed"
+                        : "bg-red-600 text-white hover:bg-red-700 cursor-pointer"
                     }
                   `}
                   disabled={courseData?.isBuy}

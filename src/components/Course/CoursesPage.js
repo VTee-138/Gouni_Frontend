@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import CourseCard from "../Course/CourseCard";
-import Header from "../Header/Header";
+
 import { getCourses } from "../../services/CourseService";
 import { toast } from "react-toastify";
 import { Stack, Typography } from "@mui/material";
@@ -139,28 +139,31 @@ export default function CoursesPage() {
   };
 
   return (
-    <div className="min-h-screen bg-gray-50">
-      <Header />
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
+    <div className="min-h-screen bg-white">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-24 pb-12">
         {/* Breadcrumb */}
-        <div className="text-sm text-gray-500 mb-4">
-          <Link to="/" className="hover:underline transition-colors">
+        <div className="text-sm text-gray-600 mb-6">
+          <Link to="/" className="hover:text-red-600 transition-colors">
             Trang chủ
-          </Link>{" "}
-          / <span className="text-gray-800 font-medium">Khóa học</span>
+          </Link>
+          <span className="mx-2">/</span>
+          <span className="text-gray-900 font-medium">Khóa học</span>
         </div>
 
         {/* Header với Mobile Menu Button */}
-        <div className="flex items-center justify-between mb-6">
-          <h1 className="text-2xl sm:text-3xl font-bold text-gray-800">
-            KHÓA HỌC
-          </h1>
+        <div className="flex items-center justify-between mb-8">
+          <div>
+            <h1 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-2">
+              Khóa học của chúng tôi
+            </h1>
+            <p className="text-gray-600">Chọn khóa học phù hợp với mục tiêu của bạn</p>
+          </div>
           <button
             onClick={toggleSidebar}
-            className="lg:hidden bg-red-600 text-white p-3 rounded-lg shadow-lg hover:bg-red-700 transition-colors flex items-center gap-2"
+            className="lg:hidden bg-red-600 text-white p-3 rounded-xl hover:bg-red-700 transition-colors flex items-center gap-2 cursor-pointer"
           >
             <Menu size={20} />
-            <span className="hidden sm:inline">Danh mục</span>
+            <span className="hidden sm:inline">Lọc</span>
           </button>
         </div>
 
@@ -176,8 +179,8 @@ export default function CoursesPage() {
           {/* Sidebar */}
           <div
             className={`
-    bg-white shadow-lg lg:rounded-2xl p-6 
-    fixed lg:static top-16 lg:top-0 left-0 bottom-0 lg:inset-y-0 z-50 w-80 lg:w-auto
+    bg-white shadow-xl lg:rounded-2xl p-6 border border-gray-100
+    fixed lg:static top-20 lg:top-0 left-0 bottom-0 lg:inset-y-0 z-50 w-80 lg:w-auto
     transform transition-transform duration-300 ease-in-out
     ${isSidebarOpen ? "translate-x-0" : "-translate-x-full lg:translate-x-0"}
     overflow-y-auto lg:max-h-none
@@ -185,18 +188,18 @@ export default function CoursesPage() {
           >
             {/* Mobile Header */}
             <div className="lg:hidden flex justify-between items-center mb-6">
-              <h2 className="text-xl font-bold text-gray-800">Danh mục</h2>
+              <h2 className="text-xl font-bold text-gray-900">Bộ lọc</h2>
               <button
                 onClick={closeSidebar}
-                className="text-gray-500 hover:text-gray-700 transition-colors p-1"
+                className="text-gray-400 hover:text-gray-600 transition-colors p-1 cursor-pointer"
               >
                 <X size={24} />
               </button>
             </div>
 
             {/* Desktop Header */}
-            <h2 className="hidden lg:block text-xl font-bold text-gray-800 mb-6 tracking-wide">
-              Danh mục khóa học
+            <h2 className="hidden lg:block text-xl font-bold text-gray-900 mb-6">
+              Danh mục
             </h2>
 
             {/* Categories List */}

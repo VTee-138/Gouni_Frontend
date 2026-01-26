@@ -6,9 +6,7 @@ import { useLocation, useNavigate, useParams } from "react-router-dom";
 import {
   BookOpen,
   Users,
-  TrendingUp,
   Search,
-  Filter,
   ChevronDown,
 } from "lucide-react";
 import Loading from "../Loading";

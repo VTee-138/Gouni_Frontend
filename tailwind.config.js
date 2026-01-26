@@ -14,10 +14,15 @@ module.exports = {
       },
       fontFamily: {
         palatino: ['"Palatino Linotype"', "Arial", "sans-serif"],
+        heading: ['Poppins', 'sans-serif'],
+        body: ['Open Sans', 'sans-serif'],
+        sans: ['Open Sans', 'sans-serif'],
       },
       colors: {
         customBlack: "#000000",
         customGreen: "#17b978",
+        primary: "#DC2626", // Red-600
+        secondary: "#EF4444", // Red-500
       },
       fontSize: {
         customSize: "1rem",

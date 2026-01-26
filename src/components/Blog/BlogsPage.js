@@ -26,7 +26,6 @@ import {
   getBlogCategories,
 } from "../../services/BlogService";
 import { toast } from "react-toastify";
-import Header from "../Header/Header";
 import Footer from "../Footer/Footer";
 import { DeleteIcon, OctagonX } from "lucide-react";
 
@@ -198,7 +197,6 @@ const BlogsPage = () => {
 
   return (
     <div className="min-h-screen bg-gray-50">
-      <Header />
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
         {/* Breadcrumb */}
         <div className="text-sm text-gray-500 mb-4">

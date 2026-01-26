@@ -25,7 +25,6 @@ import {
 } from "@mui/icons-material";
 import { getBlogBySlug } from "../../services/BlogService";
 import { toast } from "react-toastify";
-import Header from "../Header/Header";
 import Footer from "../Footer/Footer";
 import RelatedBlogs from "./RelatedBlogs";
 import BlogMathRenderer from "./BlogMathRenderer";
@@ -98,7 +97,6 @@ const BlogDetailPage = () => {
   if (loading) {
     return (
       <div className="min-h-screen bg-gray-50">
-        <Header />
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
           {/* Breadcrumb */}
           <div className="text-sm text-gray-500 mb-4">
@@ -146,7 +144,6 @@ const BlogDetailPage = () => {
   if (error || !blog) {
     return (
       <div className="min-h-screen bg-gray-50">
-        <Header />
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
           {/* Breadcrumb */}
           <div className="text-sm text-gray-500 mb-4">
@@ -180,7 +177,6 @@ const BlogDetailPage = () => {
 
   return (
     <div className="min-h-screen bg-gray-50">
-      <Header />
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
         {/* Breadcrumb */}
         <div className="text-sm text-gray-500 mb-4">

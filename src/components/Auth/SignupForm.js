@@ -1,42 +1,20 @@
-import React from "react";
-
-import { useState } from "react";
-import {
-  Button,
-  Card,
-  CardContent,
-  CardHeader,
-  TextField,
-  Typography,
-  Divider,
-  FormControlLabel,
-  Checkbox,
-  InputAdornment,
-  IconButton,
-} from "@mui/material";
-import {
-  Email as EmailIcon,
-  Lock as LockIcon,
-  Person as PersonIcon,
-  Visibility as VisibilityIcon,
-  VisibilityOff as VisibilityOffIcon,
-} from "@mui/icons-material";
-import { useNavigate } from "react-router-dom";
+import React, { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import { Eye, EyeOff, Mail, Lock, User, GraduationCap } from "lucide-react";
 import { toast } from "react-toastify";
 import { register } from "../../services/AuthService";
-import logo from "../../images/logo.png";
 
-export default function SignupForm({ onToggle }) {
+export default function SignupForm() {
   const navigate = useNavigate();
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
+  const [loading, setLoading] = useState(false);
   const [formData, setFormData] = useState({
     fullName: "",
     email: "",
     password: "",
     confirmPassword: "",
   });
-  const [loading, setLoading] = useState(false);
 
   const validateEmail = (email) => {
     const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -81,22 +59,14 @@ export default function SignupForm({ onToggle }) {
   };
   const handleSubmit = async (e) => {
     e.preventDefault();
-    // Handle signup logic here
-    if (!validate()) {
-      return;
-    }
+    if (!validate()) return;
+
     try {
       setLoading(true);
       const response = await register(formData);
       if (response && response.message) {
         toast.success(response.message);
         navigate("/login");
-        setFormData({
-          fullName: "",
-          email: "",
-          password: "",
-          confirmPassword: "",
-        });
       }
     } catch (error) {
       const message = error?.response?.data?.message;
@@ -111,220 +81,192 @@ export default function SignupForm({ onToggle }) {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-purple-50 flex items-center justify-center p-4">
-      <div className="w-full max-w-md">
-        <Card
-          sx={{
-            width: "100%",
-            boxShadow: "0 25px 50px -12px rgba(0, 0, 0, 0.25)",
-            border: "none",
-            background: "rgba(255, 255, 255, 0.8)",
-            backdropFilter: "blur(8px)",
-          }}
-        >
-          <CardHeader
-            title={
-              <Typography
-                variant="h4"
-                component="h1"
-                sx={{
-                  fontWeight: "bold",
-                  background: "linear-gradient(to right, #2563eb, #9333ea)",
-                  backgroundClip: "text",
-                  textFillColor: "transparent",
-                  WebkitBackgroundClip: "text",
-                  WebkitTextFillColor: "transparent",
-                  mb: 1,
-                }}
-              >
-                <img src={logo} alt="logo" className="w-30 h-20 mx-auto" />
-              </Typography>
-            }
-            subheader={
-              <Typography color="text.secondary">
-                Đăng ký để bắt đầu hành trình của bạn
-              </Typography>
-            }
-            sx={{ textAlign: "center", pb: 4 }}
-          />
-
-          <CardContent
-            sx={{ display: "flex", flexDirection: "column", gap: 3 }}
+    <div className="min-h-screen bg-white flex">
+      {/* Left Side - Form */}
+      <div className="flex-1 flex items-center justify-center p-4 sm:p-8">
+        <div className="w-full max-w-md">
+          {/* Logo */}
+          <Link
+            to="/"
+            className="flex items-center gap-2 text-2xl font-bold text-red-600 mb-8 hover:text-red-700 transition-colors"
           >
-            <div className="relative flex items-center justify-center">
-              <Divider sx={{ width: "100%" }} />
-              <Typography
-                variant="caption"
-                sx={{
-                  position: "absolute",
-                  px: 2,
-                  bgcolor: "white",
-                  color: "text.secondary",
-                  textTransform: "uppercase",
-                }}
-              >
-                Hoặc đăng ký với
-              </Typography>
-            </div>
+            <GraduationCap className="w-8 h-8" />
+            <span>GOUNI</span>
+          </Link>
 
-            {/* Signup Form */}
-            <form onSubmit={handleSubmit} className="space-y-4">
-              <div className="space-y-2">
-                <TextField
+          {/* Header */}
+          <div className="mb-8">
+            <h1 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-2">
+              Bắt đầu hành trình
+            </h1>
+            <p className="text-gray-600">
+              Tạo tài khoản để khám phá hàng nghìn khóa học chất lượng
+            </p>
+          </div>
+
+          {/* Form */}
+          <form onSubmit={handleSubmit} className="space-y-5">
+            {/* Full Name Input */}
+            <div>
+              <label
+                htmlFor="fullName"
+                className="block text-sm font-medium text-gray-700 mb-2"
+              >
+                Họ và tên
+              </label>
+              <div className="relative">
+                <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                  <User className="h-5 w-5 text-gray-400" />
+                </div>
+                <input
                   id="fullName"
-                  label="Họ và tên"
                   type="text"
-                  placeholder="Nguyễn Văn A"
                   value={formData.fullName}
-                  onChange={(e) =>
-                    handleInputChange("fullName", e.target.value)
-                  }
-                  fullWidth
+                  onChange={(e) => handleInputChange("fullName", e.target.value)}
+                  className="block w-full pl-10 pr-3 py-3 border border-gray-200 rounded-xl text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-transparent transition-all"
+                  placeholder="Nguyễn Văn A"
                   required
-                  InputProps={{
-                    startAdornment: (
-                      <InputAdornment position="start">
-                        <PersonIcon fontSize="small" />
-                      </InputAdornment>
-                    ),
-                  }}
-                  sx={{ mb: 2 }}
                 />
               </div>
+            </div>
 
-              <div className="space-y-2">
-                <TextField
+            {/* Email Input */}
+            <div>
+              <label
+                htmlFor="email"
+                className="block text-sm font-medium text-gray-700 mb-2"
+              >
+                Email
+              </label>
+              <div className="relative">
+                <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                  <Mail className="h-5 w-5 text-gray-400" />
+                </div>
+                <input
                   id="email"
-                  label="Email"
                   type="email"
-                  placeholder="name@example.com"
                   value={formData.email}
                   onChange={(e) => handleInputChange("email", e.target.value)}
-                  fullWidth
+                  className="block w-full pl-10 pr-3 py-3 border border-gray-200 rounded-xl text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-transparent transition-all"
+                  placeholder="name@example.com"
                   required
-                  InputProps={{
-                    startAdornment: (
-                      <InputAdornment position="start">
-                        <EmailIcon fontSize="small" />
-                      </InputAdornment>
-                    ),
-                  }}
-                  sx={{ mb: 2 }}
                 />
               </div>
-
-              <div className="space-y-2">
-                <TextField
-                  id="password"
-                  label="Mật khẩu"
-                  type={showPassword ? "text" : "password"}
-                  placeholder="Tối thiểu 8 ký tự"
-                  value={formData.password}
-                  onChange={(e) =>
-                    handleInputChange("password", e.target.value)
-                  }
-                  fullWidth
-                  required
-                  InputProps={{
-                    startAdornment: (
-                      <InputAdornment position="start">
-                        <LockIcon fontSize="small" />
-                      </InputAdornment>
-                    ),
-                    endAdornment: (
-                      <InputAdornment position="end">
-                        <IconButton
-                          onClick={() => setShowPassword(!showPassword)}
-                          edge="end"
-                        >
-                          {showPassword ? (
-                            <VisibilityOffIcon fontSize="small" />
-                          ) : (
-                            <VisibilityIcon fontSize="small" />
-                          )}
-                        </IconButton>
-                      </InputAdornment>
-                    ),
-                  }}
-                  sx={{ mb: 2 }}
-                />
-              </div>
-
-              <div className="space-y-2">
-                <TextField
-                  id="confirmPassword"
-                  label="Xác nhận mật khẩu"
-                  type={showConfirmPassword ? "text" : "password"}
-                  placeholder="Nhập lại mật khẩu"
-                  value={formData.confirmPassword}
-                  onChange={(e) =>
-                    handleInputChange("confirmPassword", e.target.value)
-                  }
-                  fullWidth
-                  required
-                  InputProps={{
-                    startAdornment: (
-                      <InputAdornment position="start">
-                        <LockIcon fontSize="small" />
-                      </InputAdornment>
-                    ),
-                    endAdornment: (
-                      <InputAdornment position="end">
-                        <IconButton
-                          onClick={() =>
-                            setShowConfirmPassword(!showConfirmPassword)
-                          }
-                          edge="end"
-                        >
-                          {showConfirmPassword ? (
-                            <VisibilityOffIcon fontSize="small" />
-                          ) : (
-                            <VisibilityIcon fontSize="small" />
-                          )}
-                        </IconButton>
-                      </InputAdornment>
-                    ),
-                  }}
-                  sx={{ mb: 2 }}
-                />
-              </div>
-
-              <Button
-                type="submit"
-                variant="contained"
-                fullWidth
-                sx={{
-                  mt: 2,
-                  height: "44px",
-                  background: "linear-gradient(to right, #2563eb, #9333ea)",
-                  "&:hover": {
-                    background: "linear-gradient(to right, #1d4ed8, #7e22ce)",
-                  },
-                }}
-              >
-                Tạo tài khoản
-              </Button>
-            </form>
-
-            <div className="flex justify-center pt-4">
-              <Typography variant="body2" color="text.secondary">
-                Đã có tài khoản?{" "}
-                <Button
-                  variant="text"
-                  onClick={() => navigate("/login")}
-                  sx={{
-                    p: 0,
-                    minWidth: "auto",
-                    color: "#2563eb",
-                    fontWeight: 500,
-                  }}
-                >
-                  Đăng nhập ngay
-                </Button>
-              </Typography>
             </div>
-          </CardContent>
-        </Card>
+
+            {/* Password Input */}
+            <div>
+              <label
+                htmlFor="password"
+                className="block text-sm font-medium text-gray-700 mb-2"
+              >
+                Mật khẩu
+              </label>
+              <div className="relative">
+                <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                  <Lock className="h-5 w-5 text-gray-400" />
+                </div>
+                <input
+                  id="password"
+                  type={showPassword ? "text" : "password"}
+                  value={formData.password}
+                  onChange={(e) => handleInputChange("password", e.target.value)}
+                  className="block w-full pl-10 pr-12 py-3 border border-gray-200 rounded-xl text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-transparent transition-all"
+                  placeholder="Tối thiểu 6 ký tự"
+                  required
+                />
+                <button
+                  type="button"
+                  onClick={() => setShowPassword(!showPassword)}
+                  className="absolute inset-y-0 right-0 pr-3 flex items-center cursor-pointer"
+                >
+                  {showPassword ? (
+                    <EyeOff className="h-5 w-5 text-gray-400 hover:text-gray-600" />
+                  ) : (
+                    <Eye className="h-5 w-5 text-gray-400 hover:text-gray-600" />
+                  )}
+                </button>
+              </div>
+            </div>
+
+            {/* Confirm Password Input */}
+            <div>
+              <label
+                htmlFor="confirmPassword"
+                className="block text-sm font-medium text-gray-700 mb-2"
+              >
+                Xác nhận mật khẩu
+              </label>
+              <div className="relative">
+                <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                  <Lock className="h-5 w-5 text-gray-400" />
+                </div>
+                <input
+                  id="confirmPassword"
+                  type={showConfirmPassword ? "text" : "password"}
+                  value={formData.confirmPassword}
+                  onChange={(e) => handleInputChange("confirmPassword", e.target.value)}
+                  className="block w-full pl-10 pr-12 py-3 border border-gray-200 rounded-xl text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-transparent transition-all"
+                  placeholder="Nhập lại mật khẩu"
+                  required
+                />
+                <button
+                  type="button"
+                  onClick={() => setShowConfirmPassword(!showConfirmPassword)}
+                  className="absolute inset-y-0 right-0 pr-3 flex items-center cursor-pointer"
+                >
+                  {showConfirmPassword ? (
+                    <EyeOff className="h-5 w-5 text-gray-400 hover:text-gray-600" />
+                  ) : (
+                    <Eye className="h-5 w-5 text-gray-400 hover:text-gray-600" />
+                  )}
+                </button>
+              </div>
+            </div>
+
+            {/* Submit Button */}
+            <button
+              type="submit"
+              disabled={loading}
+              className="w-full bg-red-600 text-white py-3 px-4 rounded-xl font-semibold hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-offset-2 transition-colors cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed"
+            >
+              {loading ? "Đang xử lý..." : "Tạo tài khoản"}
+            </button>
+          </form>
+
+          {/* Login Link */}
+          <p className="mt-6 text-center text-sm text-gray-600">
+            Đã có tài khoản?{" "}
+            <Link
+              to="/login"
+              className="font-semibold text-red-600 hover:text-red-700 cursor-pointer"
+            >
+              Đăng nhập ngay
+            </Link>
+          </p>
+        </div>
+      </div>
+
+      {/* Right Side - Image/Brand */}
+      <div className="hidden lg:flex flex-1 bg-gradient-to-br from-red-600 to-red-700 items-center justify-center p-12">
+        <div className="max-w-md text-white">
+          <h2 className="text-4xl font-bold mb-6">
+            Gia nhập cộng đồng học tập
+          </h2>
+          <p className="text-xl text-red-100 mb-8">
+            Hàng nghìn học viên đã tin tưởng và đạt được thành công cùng GOUNI
+          </p>
+          <div className="space-y-6">
+            <div className="bg-white/10 backdrop-blur-sm rounded-xl p-6">
+              <div className="text-3xl font-bold mb-1">98%</div>
+              <p className="text-red-100">Tỷ lệ hài lòng của học viên</p>
+            </div>
+            <div className="bg-white/10 backdrop-blur-sm rounded-xl p-6">
+              <div className="text-3xl font-bold mb-1">10,000+</div>
+              <p className="text-red-100">Học viên đang học tập</p>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   );

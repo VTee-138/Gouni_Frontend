@@ -1,13 +1,14 @@
 import React, { useEffect, useState } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import { Download, Eye, User, Calendar } from "lucide-react";
-import Header from "../Header/Header";
+
 import moment from "moment";
 import { toast } from "react-toastify";
 import { getDocumentById, getDocuments } from "../../services/DocumentService";
 import Loading from "../Loading";
 import Footer from "../Footer/Footer";
 import { getUserInfo } from "../../services/AuthService";
+import { FileText } from "lucide-react";
 
 export default function DocumentDetailPage() {
   // Dữ liệu mẫu nếu chưa truyền prop
@@ -86,23 +87,20 @@ export default function DocumentDetailPage() {
   if (loading) return <Loading />;
   return (
     <div>
-      <Header />
-      <div className="bg-gray-50 min-h-screen">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
-          {/* Breadcrumb */}
-          <div className="text-sm text-gray-500 mb-2">
-            <Link to="/" className="hover:underline">
-              Trang chủ
-            </Link>
-            {" / "}
-            <Link to="/documents" className="text-sm text-gray-500 mb-2">
-              Tài liệu
-            </Link>
-            {" / "}
-            <sapn className="text-gray-800 font-medium">
-              {document?.title?.text}
-            </sapn>
-          </div>
+    <div className="min-h-screen bg-white">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-24 pb-12">
+        {/* Breadcrumb */}
+        <div className="text-sm text-gray-600 mb-6">
+          <Link to="/" className="hover:text-red-600 transition-colors">
+            Trang chủ
+          </Link>
+          <span className="mx-2">/</span>
+          <Link to="/documents" className="hover:text-red-600 transition-colors">
+            Tài liệu
+          </Link>
+          <span className="mx-2">/</span>
+          <span className="text-gray-900 font-medium">{document?.title?.text}</span>
+        </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {/* Main content */}
@@ -148,9 +146,10 @@ export default function DocumentDetailPage() {
                       onClick={handleDowload}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="bg-amber-400 hover:bg-amber-500 text-white font-semibold px-4 py-1.5 rounded text-sm transition"
+                      className="bg-red-600 hover:bg-red-700 text-white font-semibold px-6 py-2.5 rounded-xl text-sm transition-colors cursor-pointer inline-flex items-center gap-2"
                       download
                     >
+                      <Download size={16} />
                       Tải xuống
                     </Link>
                   </div>
@@ -164,10 +163,11 @@ export default function DocumentDetailPage() {
                         onClick={handleDowload}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="bg-amber-400 hover:bg-amber-500 text-white font-semibold px-4 py-1.5 rounded text-sm transition"
+                        className="bg-red-600 hover:bg-red-700 text-white font-semibold px-6 py-2.5 rounded-xl text-sm transition-colors cursor-pointer inline-flex items-center gap-2"
                         download
                       >
-                        Tải xuống
+                        <Download size={16} />
+                        Tải đáp án
                       </Link>
                     </div>
                   )}
@@ -176,55 +176,36 @@ export default function DocumentDetailPage() {
             </div>
             {/* Related documents */}
             <div>
-              <div className="bg-gradient-to-br from-white to-red-50 rounded-2xl shadow-lg border border-red-100 p-6 hover:shadow-xl transition-all duration-300">
-                <div className="flex items-center gap-3 mb-4">
-                  <div className="w-2 h-8 bg-gradient-to-b from-red-500 to-red-600 rounded-full"></div>
-                  <h2 className="font-bold text-gray-800 text-lg tracking-wide">
-                    Tài liệu nổi bật
-                  </h2>
-                  <div className="flex-1 h-px bg-gradient-to-r from-red-200 to-transparent"></div>
-                </div>
+              <div className="bg-white rounded-2xl border border-gray-200 p-6 hover:shadow-lg transition-all">
+                <h2 className="text-xl font-bold text-gray-900 mb-6">
+                  Tài liệu nổi bật
+                </h2>
                 {documentsData.length > 0 ? (
                   <div className="space-y-3">
                     {documentsData.map((doc, idx) => (
-                      <div key={idx} className="group">
-                        <Link
-                          to={`/documents/${doc._id}`}
-                          className="flex items-start gap-3 p-3 rounded-xl bg-white/70 hover:bg-white hover:shadow-md transition-all duration-200 border border-transparent hover:border-red-200"
-                        >
-                          <div className="w-1.5 h-1.5 bg-red-500 rounded-full mt-2 flex-shrink-0 group-hover:scale-125 transition-transform"></div>
-                          <span className="text-gray-700 group-hover:text-red-600 font-medium text-sm leading-relaxed transition-colors">
-                            {doc.title?.text}
-                          </span>
-                        </Link>
-                      </div>
+                      <Link
+                        key={idx}
+                        to={`/documents/${doc._id}`}
+                        className="flex items-start gap-3 p-4 rounded-xl hover:bg-red-50 transition-all border border-transparent hover:border-red-200 cursor-pointer group"
+                      >
+                        <div className="w-2 h-2 bg-red-500 rounded-full mt-2 flex-shrink-0 group-hover:scale-125 transition-transform"></div>
+                        <span className="text-gray-700 group-hover:text-red-600 font-medium leading-relaxed transition-colors">
+                          {doc.title?.text}
+                        </span>
+                      </Link>
                     ))}
                   </div>
                 ) : (
-                  <div className="flex items-center justify-center py-8">
-                    <div className="text-center">
-                      <div className="w-12 h-12 bg-red-100 rounded-full flex items-center justify-center mx-auto mb-3">
-                        <svg
-                          className="w-6 h-6 text-red-400"
-                          fill="none"
-                          stroke="currentColor"
-                          viewBox="0 0 24 24"
-                        >
-                          <path
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                            strokeWidth={2}
-                            d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"
-                          />
-                        </svg>
-                      </div>
-                      <p className="text-gray-500 text-sm font-medium">
-                        Hiện tại chưa có tài liệu liên quan
-                      </p>
-                      <p className="text-gray-400 text-xs mt-1">
-                        Các tài liệu sẽ được cập nhật sớm
-                      </p>
+                  <div className="text-center py-12">
+                    <div className="w-16 h-16 bg-gray-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                      <FileText className="w-8 h-8 text-gray-400" />
                     </div>
+                    <p className="text-gray-600 font-medium">
+                      Chưa có tài liệu liên quan
+                    </p>
+                    <p className="text-sm text-gray-500 mt-1">
+                      Các tài liệu mới sẽ được cập nhật sớm
+                    </p>
                   </div>
                 )}
               </div>

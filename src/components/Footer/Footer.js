@@ -11,7 +11,7 @@ export default function Footer() {
             <div className="space-y-2 text-red-100 text-sm sm:text-base">
               <p className="flex items-start gap-2">
                 <span className="mt-0.5">📧</span>
-                <span>Email: gouni.contact@gmail.com</span>
+                <span>Email: 86HSK.contact@gmail.com</span>
               </p>
               <p className="flex items-start gap-2">
                 <span className="mt-0.5">📞</span>
@@ -31,7 +31,7 @@ export default function Footer() {
                 <Facebook className="h-4 w-4" />
               </Link>
               <Link
-                to="https://www.facebook.com/groups/tsahsathpt.gouni"
+                to="https://www.facebook.com/groups/tsahsathpt.86HSK"
                 target="_blank"
                 className="w-8 h-8 bg-gray-600 rounded flex items-center justify-center hover:bg-gray-700 transition-colors"
               >

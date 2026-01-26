@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import Header from "../Header/Header";
+
 import {
   useParams,
   useSearchParams,
@@ -80,7 +80,7 @@ const ExamConfirmInfo = () => {
         };
       default:
         return {
-          schoolName: "GOUNI EDU - CHINH PHỤC KỲ THI HSA / TSA",
+          schoolName: "86HSK EDU - CHINH PHỤC KỲ THI HSA / TSA",
           examName: "BÀI THI THỬ CHUYÊN BIỆT",
         };
     }

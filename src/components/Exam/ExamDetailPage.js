@@ -10,7 +10,7 @@ import TestMA from "./ExamTest/TestMA";
 import { getExamDetail } from "../../services/ExamService";
 import { postTest } from "../../services/TestService";
 import Loading from "../Loading";
-import Header from "../Header/Header";
+
 import Countdown from "./ExamTest/Countdown";
 import ExamNumber from "./ExamTest/ExamNumber";
 import MathRenderer from "../../common/MathRenderer";
@@ -427,7 +427,6 @@ const ExamDetailPage = () => {
     // direction={"column"}
     // gap={"40px"}
     >
-      <Header />
       <Stack
         direction={"row"}
         gap={"20px"}

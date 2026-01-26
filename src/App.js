@@ -11,7 +11,7 @@ import "react-toastify/dist/ReactToastify.css";
 import PrivateRoute from "./routes/PrivateRoute";
 import PublicRoute from "./routes/PublicRoute";
 import RouterWrapper from "./RouterWrapper";
-import HomePage from "./components/Home/Home";
+import HomePage from "./components/HomePage/Homepage";
 import CoursesPage from "./components/Course/CoursesPage";
 import DocumentsPage from "./components/Documents/DocumentsPage";
 import ExamRoomsPage from "./components/ExamRoom/ExamRoomsPage";
@@ -27,6 +27,7 @@ import LoginForm from "./components/Auth/LoginForm";
 import SignupForm from "./components/Auth/SignupForm";
 import ProfilePage from "./components/Profile/ProfilePage";
 import MyCourses from "./components/MyCourses/MyCourses";
+import Dashboard from "./components/Dashboard/DashboardNew";
 import { BlogsPage, BlogDetailPage } from "./components/Blog";
 import ContactPage from "./components/Contact/ContactPage";
 
@@ -44,6 +45,7 @@ const router = createBrowserRouter(
         <Route path="/exam/confirm-info/:id" element={<ExamConfirmInfo />} />
         <Route path="/profile" element={<ProfilePage />} />
         <Route path="/my-courses" element={<MyCourses />} />
+        <Route path="/dashboard" element={<Dashboard />} />
       </Route>
       <Route element={<PublicRoute />}>
         <Route path="/home" element={<HomePage />} />

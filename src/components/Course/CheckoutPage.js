@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import Header from "../Header/Header";
+
 import { useLocation, useParams } from "react-router-dom";
 import { toast } from "react-toastify";
 import { getCourseById } from "../../services/CourseService";
@@ -69,7 +69,6 @@ export default function CheckoutPage() {
   if (loading) return <Loading />;
   return (
     <div>
-      <Header />
       <div className="bg-[#f8fafc] min-h-screen">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
           {/* Bước tiến trình */}

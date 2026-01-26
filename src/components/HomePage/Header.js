@@ -12,9 +12,9 @@ export default function Header() {
   const navigate = useNavigate();
 
   const navItems = [
-    { name: "Khóa học", path: "/courses", icon: <BookOpen className="w-4 h-4" /> },
-    { name: "Tài liệu", path: "/documents", icon: <FileText className="w-4 h-4" /> },
-    { name: "Phòng thi", path: "/exam-rooms", icon: <GraduationCap className="w-4 h-4" /> }
+    { name: "Trang chủ", path: "/", icon: <BookOpen className="w-5 h-5" /> },
+    { name: "Đề thi", path: "/exam", icon: <FileText className="w-5 h-5" /> },
+    { name: "Blog", path: "/blog", icon: <GraduationCap className="w-5 h-5" /> },
   ];
 
   // Check authentication status

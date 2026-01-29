@@ -1,14 +1,13 @@
 import React, { useState, useRef, useEffect } from 'react';
-import { Link, useLocation, useNavigate } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { 
   BookOpen, 
-  FileText, 
-  Target, 
   User, 
   Layout, 
   LogOut, 
   GraduationCap,
   MoreVertical,
+  Rocket,
 } from 'lucide-react';
 import { getUserInfo, logout } from '../services/AuthService';
 
@@ -22,6 +21,7 @@ export default function UserSidebar({ isSidebarOpen, setIsSidebarOpen }) {
     { icon: Layout, label: "Tổng quan", path: "/dashboard" },
     { icon: User, label: "Đề thi", path: "/exam" },
     { icon: BookOpen, label: "Tin tức", path: "/blog" },
+    { icon: Rocket, label: "Lịch sử thi", path: "/exam-history" },
     // { icon: BookOpen, label: "Khóa học của tôi", path: "/my-courses" },
     // { icon: FileText, label: "Tài liệu", path: "/documents" },
     // { icon: Target, label: "Phòng thi", path: "/exam-rooms" },
@@ -66,7 +66,7 @@ export default function UserSidebar({ isSidebarOpen, setIsSidebarOpen }) {
             <div className="bg-red-50 p-2 rounded-xl">
               <GraduationCap size={28} />
             </div>
-            <span className="text-xl font-bold tracking-tight">GOUNI</span>
+            <span className="text-xl font-bold tracking-tight">86HSK</span>
           </Link>
         </div>
 

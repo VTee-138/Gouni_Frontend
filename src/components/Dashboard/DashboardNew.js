@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from "react";
-import { Link, useLocation } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import { 
   FileText, 
   Target, 
@@ -8,10 +8,6 @@ import {
 } from "lucide-react";
 import { toast } from "react-toastify";
 import Loading from "../Loading";
-import { getCourses } from "../../services/CourseService";
-import { getDocuments } from "../../services/DocumentService";
-import { getExamRooms } from "../../services/ExamRoomService";
-import { getUserInfo } from "../../services/AuthService";
 import UserSidebar from "../UserSidebar";
 
 export default function Dashboard() {
@@ -26,26 +22,13 @@ export default function Dashboard() {
     studyTime: 0
   });
 
-  const location = useLocation();
-  const userInfo = getUserInfo();
 
   useEffect(() => {
     const fetchStats = async () => {
       try {
         setLoading(true);
-        const userId = userInfo?.id;
-
-        const [coursesResponse, documentsResponse, examRoomsResponse] = await Promise.all([
-          getCourses(1, 100, "", "", "", "", userId),
-          getDocuments(1, 100, "", "", "", "", userId),
-          getExamRooms()
-        ]);
 
         setStats({
-          coursesCount: coursesResponse?.data?.length || 0,
-          documentsCount: documentsResponse?.data?.length || 0,
-          examRoomsCount: examRoomsResponse?.data?.length || 0,
-          // Placeholder data until backend APIs are available
           totalExams: 15,
           avgScore: 8.5,
           studyTime: 124
@@ -91,7 +74,7 @@ export default function Dashboard() {
   if (loading) return <Loading />;
 
   return (
-    <div className="bg-gray-50 min-h-screen">
+    <div className="bg-gray-50 min-h-screen pt-20">
       <UserSidebar isSidebarOpen={isSidebarOpen} setIsSidebarOpen={setIsSidebarOpen} />
 
       <main className="lg:ml-72 min-h-screen transition-all duration-300">

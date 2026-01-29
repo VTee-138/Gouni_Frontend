@@ -1,9 +1,8 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect, useState, useRef } from "react";
-import { Typography, Stack } from "@mui/material";
 import moment from "moment";
-import AccessAlarmsIcon from "@mui/icons-material/AccessAlarms";
 
-const Countdown = ({ exam, onComplete, isTitle = true, examRoomId }) => {
+const Countdown = ({ exam, onComplete, isTitle = false, examRoomId }) => {
   const [remainingTime, setRemainingTime] = useState(null);
   const hasChecked = useRef(false);
   const onCompleteRef = useRef(onComplete);
@@ -34,7 +33,7 @@ const Countdown = ({ exam, onComplete, isTitle = true, examRoomId }) => {
       const timeLeft = diff > 0 ? diff : 0;
 
       setRemainingTime(timeLeft);
-      // sessionStorage.setItem("time-left", JSON.stringify(timeLeft * 1000));
+      sessionStorage.setItem("time-left", JSON.stringify(timeLeft * 1000));
 
       // Nếu đã hết giờ và chưa gọi onComplete
       if (timeLeft === 0 && !hasChecked.current) {
@@ -59,28 +58,16 @@ const Countdown = ({ exam, onComplete, isTitle = true, examRoomId }) => {
   if (remainingTime === null) return null;
 
   return (
-    <Stack
-      // sx={{
-      //   width: "100%",
-      //   // backgroundColor: "white",
-      //   padding: "15px",
-      //   borderRadius: "10px",
-      //   boxShadow: "0 1px 3px rgba(0, 0, 0, .05)",
-      //   alignItems: "center",
-      //   // justifyContent: "center",
-      //   flexDirection: "row",
-      // }}
-      className="w-full p-4 flex flex-col lg:flex-row items-center"
-    >
-      {/* <AccessAlarmsIcon /> */}
+    <div className="flex items-center gap-2">
       {isTitle && (
-        <Typography className="text-xs md:text-[1rem] text-gray-300 mr-0 lg:mr-5 text-center">
-          Thời gian còn lại
-        </Typography>
+        <span className="text-sm font-medium text-gray-400">
+          Thời gian còn lại:
+        </span>
       )}
-
-      <strong className="text-xl font-mono">{formatTime(remainingTime)}</strong>
-    </Stack>
+      <span className="font-mono text-inherit tracking-widest">
+          {formatTime(remainingTime)}
+      </span>
+    </div>
   );
 };
 

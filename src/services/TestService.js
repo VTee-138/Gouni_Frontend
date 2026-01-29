@@ -4,15 +4,19 @@ const PATH_TEST = "/exam-result";
 const postTest = async (id, body) => {
   return await post(PATH_TEST + `/submit-test/${id}`, body);
 };
-const getResultById = async (id, examRoomId) => {
-  return await get(PATH_TEST + `/${id}/${examRoomId}`);
+const getResultById = async (id) => {
+  return await get(PATH_TEST + `/${id}`);
 };
-const getResultAll = async (id, examRoomId) => {
-  return await get(PATH_TEST + `?examId=${id}&examRoomId=${examRoomId}`);
-};
-// /exam-result/check-correct-answers/:examId
-const getResultHistory = async (id, examRoomId) => {
-  return await get(PATH_TEST + `/check-correct-answers/${id}/${examRoomId}`);
+const getResultAll = async (id) => {
+  return await get(PATH_TEST + `?examId=${id}`);
 };
 
-export { postTest, getResultById, getResultAll, getResultHistory };
+const checkCorrectAnswers = async (id) => {
+  return await get(PATH_TEST + `/check-correct-answers/${id}`);
+};
+
+const getExamHistory = async (id) => {
+  return await get(PATH_TEST + `/history/${id}`);
+};
+
+export { postTest, getResultById, getResultAll, checkCorrectAnswers, getExamHistory };

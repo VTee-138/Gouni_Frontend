@@ -1,14 +1,17 @@
 import { get } from "../common/apiClient";
 
 const PATH_EXAM = "/exam";
-const getExam = async () => {
-  return await get(PATH_EXAM);
+const getExam = async (page = 1, limit = 6, query = "", typeOfExam = "") => {
+  return await get(
+    PATH_EXAM +
+      `?page=${page}&limit=${limit}&q=${query}&typeOfExam=${typeOfExam}`
+  );
 };
-const getExamDetail = async (id, examRoomId) => {
-  return await get(PATH_EXAM + `/${id}?examRoomId=${examRoomId}`);
+const getExamDetail = async (id) => {
+  return await get(PATH_EXAM + `/${id}`);
 };
-const getExamTrend = async (page, type, limit, examRoomId) => {
-  return await get(PATH_EXAM + `/top-trending/${examRoomId}`);
+const getExamTrend = async () => {
+  return await get(PATH_EXAM + `/top-trending`);
 };
 const getPost = async (pageNumber, type = "", limit = 9) => {
   return await get(

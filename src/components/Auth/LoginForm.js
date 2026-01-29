@@ -11,8 +11,6 @@ export default function LoginForm() {
   const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
-  const location = useLocation();
-  const from = location.state?.from?.pathname || "/";
 
   // Handle back button
   useEffect(() => {
@@ -57,8 +55,8 @@ export default function LoginForm() {
             role: response.user?.role,
           })
         );
-        navigate(from, { replace: true });
       }
+      window.location.reload();
     } catch (error) {
       const message = error?.response?.data?.message;
       toast.error(message);
@@ -80,7 +78,7 @@ export default function LoginForm() {
             className="flex items-center gap-2 text-2xl font-bold text-red-600 mb-8 hover:text-red-700 transition-colors"
           >
             <GraduationCap className="w-8 h-8" />
-            <span>GOUNI</span>
+            <span>86HSK</span>
           </Link>
 
           {/* Header */}

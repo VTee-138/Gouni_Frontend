@@ -178,7 +178,7 @@ const ContactPage = () => {
     {
       icon: <TelegramIcon />,
       name: "Page",
-      url: "https://www.facebook.com/gouniedu",
+      url: "https://www.facebook.com/86HSKedu",
       color: "from-blue-400 to-blue-500",
     },
     {

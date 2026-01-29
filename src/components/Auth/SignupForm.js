@@ -91,7 +91,7 @@ export default function SignupForm() {
             className="flex items-center gap-2 text-2xl font-bold text-red-600 mb-8 hover:text-red-700 transition-colors"
           >
             <GraduationCap className="w-8 h-8" />
-            <span>GOUNI</span>
+            <span>86HSK</span>
           </Link>
 
           {/* Header */}
@@ -254,7 +254,7 @@ export default function SignupForm() {
             Gia nhập cộng đồng học tập
           </h2>
           <p className="text-xl text-red-100 mb-8">
-            Hàng nghìn học viên đã tin tưởng và đạt được thành công cùng GOUNI
+            Hàng nghìn học viên đã tin tưởng và đạt được thành công cùng 86HSK
           </p>
           <div className="space-y-6">
             <div className="bg-white/10 backdrop-blur-sm rounded-xl p-6">

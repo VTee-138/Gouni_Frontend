@@ -24,7 +24,7 @@ export default function Footer() {
             </div>
             <div className="flex gap-3 mt-4">
               <Link
-                to="https://www.facebook.com/gouniedu"
+                to="https://www.facebook.com/86HSKedu"
                 target="_blank"
                 className="w-8 h-8 bg-blue-600 rounded flex items-center justify-center hover:bg-blue-700 transition-colors"
               >

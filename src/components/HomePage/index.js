@@ -2,8 +2,5 @@ export { default as Homepage } from './Homepage';
 export { default as Header } from './Header';
 export { default as HeroSection } from './HeroSection';
 export { default as FeaturesSection } from './FeaturesSection';
-export { default as CoursesSection } from './CoursesSection';
-export { default as DocumentsSection } from './DocumentsSection';
-export { default as ExamRoomsSection } from './ExamRoomsSection';
 export { default as TestimonialsSection } from './TestimonialsSection';
 export { default as CTASection } from './CTASection';

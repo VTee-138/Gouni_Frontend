@@ -6,9 +6,9 @@ function PrivateRoute() {
   const auth = checkJwtExistsAndExpired();
   const location = useLocation();
 
-  // Redirect to login if not authenticated
+  // Redirect to home if not authenticated
   if (!auth) {
-    return <Navigate to="/login" state={{ from: location }} />;
+    return <Navigate to="/" state={{ from: location }} />;
   }
 
   // Render the child components if authenticated

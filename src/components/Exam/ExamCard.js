@@ -17,7 +17,7 @@ const ExamCard = ({ item }) => {
                 ${
                   item?.access === "PUBLIC"
                     ? "bg-green-500/90"
-                    : "bg-blue-600/90"
+                    : "bg-red-600/90"
                 }
               `}
         >
@@ -41,7 +41,7 @@ const ExamCard = ({ item }) => {
         </div>
 
         {/* Title */}
-        <h3 className="font-bold text-gray-900 text-sm mb-4 line-clamp-2 leading-snug group-hover:text-blue-600 transition-colors">
+        <h3 className="font-bold text-gray-900 text-sm mb-4 line-clamp-2 leading-snug group-hover:text-red-600 transition-colors">
           {item?.title?.text}
         </h3>
 
@@ -63,7 +63,7 @@ const ExamCard = ({ item }) => {
 
         {/* Action Button */}
         <Link to={`/exam/${item?._id || ""}`}>
-          <button className="w-full py-2.5 px-4 rounded-lg text-sm font-semibold flex items-center justify-center gap-2 bg-blue-600 text-white hover:bg-blue-700 shadow-md hover:shadow-lg">
+          <button className="w-full py-2.5 px-4 rounded-lg text-sm font-semibold flex items-center justify-center gap-2 bg-red-600 text-white hover:bg-red-700 shadow-md hover:shadow-lg">
             <>
               Xem đề thi <ArrowRight size={16} />
             </>

@@ -1,10 +1,10 @@
 import { get } from "../common/apiClient";
 
 const PATH_EXAM = "/exam";
-const getExam = async (page = 1, limit = 6, query = "", typeOfExam = "") => {
+const getExam = async (page = 1, limit = 6, query = "", typeOfExam = "", status = "") => {
   return await get(
     PATH_EXAM +
-      `?page=${page}&limit=${limit}&q=${query}&typeOfExam=${typeOfExam}`
+      `?page=${page}&limit=${limit}&q=${query}&typeOfExam=${typeOfExam}&status=${status}`
   );
 };
 const getExamDetail = async (id) => {

@@ -1,6 +1,6 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import { useEffect, useMemo, useState } from "react";
-import { useParams, useNavigate, useSearchParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import { CheckCircle2, XCircle, Award, History, ListChecks } from "lucide-react";
 import moment from "moment";
@@ -91,8 +91,8 @@ function ExamResultPage() {
       <div className="bg-white border-b border-gray-200 sticky top-0 z-20 shadow-sm">
            <div className="max-w-[1920px] mx-auto px-4 md:px-8 py-4 flex flex-col md:flex-row items-center justify-between gap-4">
                 <div className="flex items-center gap-4">
-                    <div className="p-3 bg-blue-50 rounded-xl">
-                        <Award className="w-8 h-8 text-blue-600" />
+                    <div className="p-3 bg-red-50 rounded-xl">
+                        <Award className="w-8 h-8 text-red-600" />
                     </div>
                     <div>
                         <h1 className="text-xl font-bold text-gray-900">{examData.title?.text || examData.title}</h1>
@@ -124,7 +124,7 @@ function ExamResultPage() {
                      <button onClick={() => navigate('/exam')} className="px-4 py-2 text-gray-600 hover:bg-gray-100 rounded-lg font-medium text-sm transition-colors">
                         Thoát
                      </button>
-                      <button onClick={() => navigate(`/exam/test/${id}`)} className="px-5 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-lg font-bold text-sm shadow-lg shadow-blue-200 transition-all">
+                      <button onClick={() => navigate(`/exam/test/${id}`)} className="px-5 py-2 bg-red-600 hover:bg-red-700 text-white rounded-lg font-bold text-sm shadow-lg shadow-red-200 transition-all">
                         Làm lại
                      </button>
                 </div>
@@ -148,7 +148,7 @@ function ExamResultPage() {
                         key={index} 
                         className={`bg-white rounded-2xl p-6 border-2 transition-all duration-300 scroll-mt-32
                             ${isCorrect === true ? 'border-green-100 shadow-sm' : isCorrect === false ? 'border-red-100 shadow-sm' : 'border-gray-100'}
-                            ${isCurrentHighlight ? 'ring-2 ring-blue-400 ring-offset-2' : ''}
+                            ${isCurrentHighlight ? 'ring-2 ring-red-400 ring-offset-2' : ''}
                         `}
                     >
                          <div className="flex items-start gap-4 mb-4">
@@ -185,14 +185,14 @@ function ExamResultPage() {
                              {isCorrect === false && (
                                  <div className="flex gap-2 text-sm border-t border-gray-200 pt-2 mt-2">
                                      <span className="font-semibold text-gray-500 uppercase tracking-wider w-24">Đáp án đúng:</span>
-                                     <span className="font-bold text-blue-600">
+                                     <span className="font-bold text-red-600">
                                          {correctAnswer} 
                                      </span>
                                  </div>
                              )}
 
                              {question.explain && (
-                                 <div className="mt-4 bg-blue-50 p-3 rounded-lg text-sm text-blue-900">
+                                 <div className="mt-4 bg-red-50 p-3 rounded-lg text-sm text-red-900">
                                      <span className="font-bold block mb-1">Giải thích:</span>
                                      <MathRenderer content={question.explain} />
                                  </div>
@@ -208,7 +208,7 @@ function ExamResultPage() {
              <div className="sticky top-28 space-y-6">
                  <div className="bg-white rounded-2xl shadow-lg shadow-gray-100 border border-gray-100 p-6">
                      <h3 className="font-bold text-gray-800 mb-4 flex items-center gap-2">
-                         <ListChecks className="w-5 h-5 text-blue-600" />
+                         <ListChecks className="w-5 h-5 text-red-600" />
                          Danh sách câu hỏi
                      </h3>
                      

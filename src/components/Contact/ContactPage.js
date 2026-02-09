@@ -137,7 +137,7 @@ const ContactPage = () => {
 
   const contactInfo = [
     {
-      icon: <PhoneIcon className="text-blue-500" />,
+      icon: <PhoneIcon className="text-red-500" />,
       title: "Điện thoại",
       content: "+84 24 3868 1616",
       description: "Thứ 2 - Thứ 6: 8:00 - 17:00",
@@ -167,7 +167,7 @@ const ContactPage = () => {
       icon: <FacebookIcon />,
       name: "Facebook",
       url: "https://www.facebook.com/groups/tsahsathpt.86HSK",
-      color: "from-blue-600 to-blue-700",
+      color: "from-red-600 to-red-700",
     },
     {
       icon: <YouTubeIcon />,
@@ -179,7 +179,7 @@ const ContactPage = () => {
       icon: <TelegramIcon />,
       name: "Page",
       url: "https://www.facebook.com/86HSKedu",
-      color: "from-blue-400 to-blue-500",
+      color: "from-red-400 to-red-500",
     },
     {
       icon: <WebsiteIcon />,
@@ -190,9 +190,9 @@ const ContactPage = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-purple-50">
+    <div className="min-h-screen bg-gradient-to-br from-red-50 via-white to-purple-50">
       {/* Hero Section */}
-      <Box className="bg-gradient-to-r from-blue-600 via-purple-600 to-indigo-700 text-white py-20">
+      <Box className="bg-gradient-to-r from-red-600 via-purple-600 to-indigo-700 text-white py-20">
         <Container maxWidth="lg">
           <div className="text-center">
             <Typography variant="h2" className="font-bold mb-4 text-white">
@@ -200,7 +200,7 @@ const ContactPage = () => {
             </Typography>
             <Typography
               variant="h6"
-              className="text-blue-100 max-w-2xl mx-auto"
+              className="text-red-100 max-w-2xl mx-auto"
             >
               Chúng tôi luôn sẵn sàng lắng nghe và hỗ trợ bạn. Hãy để lại thông
               tin để được tư vấn nhanh nhất!
@@ -243,7 +243,7 @@ const ContactPage = () => {
                         </Typography>
                         <Typography
                           variant="body1"
-                          className="font-medium text-blue-600 mb-1"
+                          className="font-medium text-red-600 mb-1"
                         >
                           {info.content}
                         </Typography>
@@ -382,7 +382,7 @@ const ContactPage = () => {
                         size="large"
                         disabled={isSubmitting}
                         startIcon={<SendIcon />}
-                        className="w-full py-4 bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white font-semibold rounded-lg shadow-lg hover:shadow-xl transition-all duration-300"
+                        className="w-full py-4 bg-gradient-to-r from-red-600 to-purple-600 hover:from-red-700 hover:to-purple-700 text-white font-semibold rounded-lg shadow-lg hover:shadow-xl transition-all duration-300"
                       >
                         {isSubmitting ? "Đang gửi..." : "Gửi tin nhắn"}
                       </Button>
@@ -417,7 +417,7 @@ const ContactPage = () => {
                     </div>
                   </div>
                   <div className="flex items-start">
-                    <PhoneIcon className="text-blue-500 mt-1 mr-3" />
+                    <PhoneIcon className="text-red-500 mt-1 mr-3" />
                     <div>
                       <Typography variant="body1" className="font-medium">
                         Hotline
@@ -492,8 +492,8 @@ const ContactPage = () => {
           </Typography>
           <Paper className="overflow-hidden rounded-2xl shadow-xl">
             {/* Map Header */}
-            <div className="bg-gradient-to-r from-blue-100 to-purple-100 p-6 text-center">
-              <LocationIcon className="text-4xl text-blue-500 mb-2" />
+            <div className="bg-gradient-to-r from-red-100 to-purple-100 p-6 text-center">
+              <LocationIcon className="text-4xl text-red-500 mb-2" />
               <Typography
                 variant="h6"
                 className="font-semibold text-gray-800 mb-1"
@@ -523,7 +523,7 @@ const ContactPage = () => {
             <div className="bg-gray-50 p-4 text-center">
               <Button
                 variant="contained"
-                className="bg-blue-600 hover:bg-blue-700"
+                className="bg-red-600 hover:bg-red-700"
                 onClick={() =>
                   window.open(
                     "https://www.google.com/maps/place/295+P.+Thanh+Nh%C3%A0n,+Thanh+Nh%C3%A0n,+Hai+B%C3%A0+Tr%C6%B0ng,+H%C3%A0+N%E1%BB%99i+100000,+Vi%E1%BB%87t+Nam/@21.00319403876082,105.84700787749573,17z",

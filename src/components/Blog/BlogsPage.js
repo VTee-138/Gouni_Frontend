@@ -26,7 +26,6 @@ import {
   getBlogCategories,
 } from "../../services/BlogService";
 import { toast } from "react-toastify";
-import Footer from "../Footer/Footer";
 import { DeleteIcon, OctagonX } from "lucide-react";
 
 const BlogsPage = () => {
@@ -381,8 +380,6 @@ const BlogsPage = () => {
           </Container>
         </div>
       </div>
-      {/* Footer */}
-      <Footer />
     </div>
   );
 };

@@ -57,12 +57,12 @@ export default function ExamRoomCard({
 
           {/* Stats Cards - Compact layout */}
           <div className="flex gap-2 mb-3">
-            <div className="flex-1 bg-blue-50 border border-blue-200 rounded-lg px-2 py-1.5 text-center">
-              <div className="flex items-center justify-center gap-1 text-blue-600 text-xs">
+            <div className="flex-1 bg-red-50 border border-red-200 rounded-lg px-2 py-1.5 text-center">
+              <div className="flex items-center justify-center gap-1 text-red-600 text-xs">
                 <FileQuestion className="w-3 h-3" />
                 <span className="font-bold">{countExam}</span>
               </div>
-              <div className="text-xs text-blue-600 font-medium">Đề thi</div>
+              <div className="text-xs text-red-600 font-medium">Đề thi</div>
             </div>
             <div className="flex-1 bg-purple-50 border border-purple-200 rounded-lg px-2 py-1.5 text-center">
               <div className="flex items-center justify-center gap-1 text-purple-600 text-xs">

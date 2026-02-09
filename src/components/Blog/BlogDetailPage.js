@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useState, useEffect } from "react";
 import { useParams, useNavigate, Link } from "react-router-dom";
 import {
@@ -7,7 +8,6 @@ import {
   CardContent,
   CardMedia,
   Chip,
-  Box,
   Avatar,
   Divider,
   Skeleton,
@@ -218,7 +218,7 @@ const BlogDetailPage = () => {
                     color="primary"
                     variant="outlined"
                     onClick={() => handleCategoryClick(blog.category)}
-                    className="cursor-pointer hover:bg-blue-50"
+                    className="cursor-pointer hover:bg-red-50"
                     icon={<CategoryIcon />}
                   />
                 </div>
@@ -274,7 +274,7 @@ const BlogDetailPage = () => {
                   <Typography
                     variant="h6"
                     color="textSecondary"
-                    className="italic mb-6 p-4 bg-gray-50 rounded-lg border-l-4 border-blue-500"
+                    className="italic mb-6 p-4 bg-gray-50 rounded-lg border-l-4 border-red-500"
                   >
                     {blog.excerpt}
                   </Typography>

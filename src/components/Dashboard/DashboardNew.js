@@ -1,14 +1,15 @@
 import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
 import { 
   FileText, 
   Target, 
   Clock, 
   Menu, 
+  Bell,
 } from "lucide-react";
 import { toast } from "react-toastify";
 import Loading from "../Loading";
 import UserSidebar from "../UserSidebar";
+import { getUserStats } from "../../services/TestService"; // Import service
 
 export default function Dashboard() {
   const [loading, setLoading] = useState(false);
@@ -27,12 +28,10 @@ export default function Dashboard() {
     const fetchStats = async () => {
       try {
         setLoading(true);
-
-        setStats({
-          totalExams: 15,
-          avgScore: 8.5,
-          studyTime: 124
-        });
+        const res = await getUserStats();
+        if (res && res.data) {
+          setStats(res.data);
+        }
       } catch (error) {
         const message = error?.response?.data?.message || "Có lỗi xảy ra";
         toast.error(message);
@@ -50,8 +49,8 @@ export default function Dashboard() {
       value: stats.totalExams,
       label: "Bài đã làm",
       icon: FileText,
-      color: "text-blue-600",
-      bg: "bg-blue-50"
+      color: "text-red-600",
+      bg: "bg-red-50"
     },
     {
       title: "Điểm trung bình",
@@ -107,27 +106,19 @@ export default function Dashboard() {
               ))}
             </div>
 
-            {/* Recent Access placeholders - kept for layout completeness */}
-            <div className="bg-white rounded-2xl border border-gray-100 p-6">
+            {/* Notifications Section */}
+            <div className="bg-white rounded-2xl border border-gray-100 p-6 min-h-[300px]">
               <div className="flex justify-between items-center mb-6">
-                <h3 className="text-xl font-bold text-gray-900">Hoạt động gần đây</h3>
-                <Link to="/profile" className="text-sm text-red-600 font-semibold hover:underline">
-                  Xem tất cả
-                </Link>
+                <h3 className="text-xl font-bold text-gray-900 flex items-center gap-2">
+                  <Bell size={20} className="text-red-600" />
+                  Thông báo
+                </h3>
               </div>
               
-              <div className="space-y-4">
-                {[1, 2, 3].map((_, i) => (
-                  <div key={i} className="flex items-center gap-4 p-4 rounded-xl hover:bg-gray-50 transition-colors cursor-pointer border border-transparent hover:border-gray-100">
-                    <div className="w-10 h-10 rounded-lg bg-gray-100 flex items-center justify-center text-gray-500">
-                      <Clock size={20} />
-                    </div>
-                    <div className="flex-1">
-                      <h4 className="font-semibold text-gray-900">Đăng nhập hệ thống</h4>
-                      <p className="text-sm text-gray-500">2 giờ trước</p>
-                    </div>
-                  </div>
-                ))}
+              <div className="flex flex-col items-center justify-center h-48 text-gray-400">
+                <Bell size={48} className="mb-4 opacity-20" />
+                <p>Chưa có thông báo nào</p>
+                <p className="text-sm mt-1">Thông báo quan trọng sẽ xuất hiện tại đây</p>
               </div>
             </div>
           </div>

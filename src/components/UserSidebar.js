@@ -20,7 +20,7 @@ export default function UserSidebar({ isSidebarOpen, setIsSidebarOpen }) {
   const menuItems = [
     { icon: Layout, label: "Tổng quan", path: "/dashboard" },
     { icon: User, label: "Đề thi", path: "/exam" },
-    { icon: BookOpen, label: "Tin tức", path: "/blog" },
+    // { icon: BookOpen, label: "Tin tức", path: "/blog" },
     { icon: Rocket, label: "Lịch sử thi", path: "/exam-history" },
     // { icon: BookOpen, label: "Khóa học của tôi", path: "/my-courses" },
     // { icon: FileText, label: "Tài liệu", path: "/documents" },

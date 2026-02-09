@@ -1,4 +1,4 @@
-import { get, post } from "../common/apiClient";
+import { get, post, del } from "../common/apiClient";
 
 const PATH_TEST = "/exam-result";
 const postTest = async (id, body) => {
@@ -19,4 +19,24 @@ const getExamHistory = async (id) => {
   return await get(PATH_TEST + `/history/${id}`);
 };
 
-export { postTest, getResultById, getResultAll, checkCorrectAnswers, getExamHistory };
+const getUserAllExamHistory = async () => {
+  return await get(PATH_TEST + `/history/all`);
+}
+
+const saveExamProgress = async (id, body) => {
+  return await post(PATH_TEST + `/save-progress/${id}`, body);
+};
+
+const getUserStats = async () => {
+  return await get(PATH_TEST + `/stats`);
+};
+
+const getPausedExam = async (id) => {
+  return await get(PATH_TEST + `/check-paused/${id}`);
+};
+
+const deletePausedProgress = async (id) => {
+  return await del(PATH_TEST + `/delete-paused/${id}`);
+};
+
+export { postTest, getResultById, getResultAll, checkCorrectAnswers, getExamHistory, getUserAllExamHistory, saveExamProgress, getPausedExam, deletePausedProgress, getUserStats };

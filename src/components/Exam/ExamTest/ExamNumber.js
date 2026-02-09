@@ -24,7 +24,7 @@ const ExamNumber = ({
         let classes = "border shadow-sm font-bold ";
         
         if (isCurrent) {
-            classes += "ring-2 ring-blue-400 ring-offset-1 ";
+            classes += "ring-2 ring-red-400 ring-offset-1 ";
         }
 
         if (isCorrect === true) {
@@ -42,10 +42,10 @@ const ExamNumber = ({
     const isAnswered = answers?.[questionKey];
 
     if (isCurrent) {
-        return "bg-blue-600 text-white border-blue-600 shadow-md ring-2 ring-blue-200";
+        return "bg-red-600 text-white border-red-600 shadow-md ring-2 ring-red-200";
     }
     if (isAnswered) {
-        return "bg-blue-50 text-blue-700 border-blue-200 hover:bg-blue-100";
+        return "bg-red-50 text-red-700 border-red-200 hover:bg-red-100";
     }
     return "bg-white text-gray-500 border-gray-200 hover:border-gray-300 hover:bg-gray-50";
   };
@@ -73,10 +73,10 @@ const ExamNumber = ({
     <div className="w-full">
       <div className="mb-2 flex items-center gap-4 text-xs text-gray-500 px-1">
           <div className="flex items-center gap-1">
-               <span className="w-3 h-3 rounded-full bg-blue-600"></span> Đang làm
+               <span className="w-3 h-3 rounded-full bg-red-600"></span> Đang làm
           </div>
           <div className="flex items-center gap-1">
-               <span className="w-3 h-3 rounded-full bg-blue-50 border border-blue-200"></span> Đã làm
+               <span className="w-3 h-3 rounded-full bg-red-50 border border-red-200"></span> Đã làm
           </div>
            <div className="flex items-center gap-1">
                <span className="w-3 h-3 rounded-full bg-white border border-gray-200"></span> Chưa làm

@@ -2,8 +2,9 @@
 import React, { useEffect, useState, useRef } from "react";
 import moment from "moment";
 
-const Countdown = ({ exam, onComplete, isTitle = false, examRoomId }) => {
+const Countdown = ({ exam, onComplete, isTitle = false }) => {
   const [remainingTime, setRemainingTime] = useState(null);
+  const [completingTime, setCompletingTime] = useState(null);
   const hasChecked = useRef(false);
   const onCompleteRef = useRef(onComplete);
 
@@ -14,31 +15,30 @@ const Countdown = ({ exam, onComplete, isTitle = false, examRoomId }) => {
   useEffect(() => {
     if (!exam) return;
 
-    const timeKey = `exam_time_${exam._id}_${examRoomId}`;
-    let endTimeFromStorage = sessionStorage.getItem(timeKey);
-    let endTime;
-
-    if (endTimeFromStorage) {
-      endTime = moment(parseInt(endTimeFromStorage));
-    } else {
-      const startTime = moment(exam.start);
-      const durationInSeconds = exam.time * 60;
-      endTime = moment(startTime).add(durationInSeconds, "seconds");
-      sessionStorage.setItem(timeKey, endTime.valueOf());
-    }
+    hasChecked.current = false;
+    const startTime = moment(exam.start);
+    const endTime = startTime.clone().add(exam.time, "minutes");
 
     const updateRemainingTime = () => {
       const now = moment();
       const diff = endTime.diff(now, "seconds");
-      const timeLeft = diff > 0 ? diff : 0;
+      const timeLeft = Math.max(0, diff);
 
       setRemainingTime(timeLeft);
       sessionStorage.setItem("time-left", JSON.stringify(timeLeft * 1000));
 
-      // Nếu đã hết giờ và chưa gọi onComplete
+      const elapsed = Math.max(0, now.diff(startTime, "seconds"));
+      const fixedElapsed = Math.min(elapsed, exam.time * 60);
+
+      setCompletingTime(fixedElapsed);
+      sessionStorage.setItem(
+        "exam_completing_time",
+        JSON.stringify(fixedElapsed * 1000)
+      );
+
       if (timeLeft === 0 && !hasChecked.current) {
         hasChecked.current = true;
-        if (onCompleteRef.current) onCompleteRef.current();
+        onCompleteRef.current?.();
       }
     };
 
@@ -46,7 +46,7 @@ const Countdown = ({ exam, onComplete, isTitle = false, examRoomId }) => {
     const intervalId = setInterval(updateRemainingTime, 1000);
 
     return () => clearInterval(intervalId);
-  }, [exam]);
+  }, [exam?._id, exam?.start, exam?.time]);
 
   const formatTime = (seconds) => {
     const h = String(Math.floor(seconds / 3600)).padStart(2, "0");
@@ -54,8 +54,6 @@ const Countdown = ({ exam, onComplete, isTitle = false, examRoomId }) => {
     const s = String(seconds % 60).padStart(2, "0");
     return `${h}:${m}:${s}`;
   };
-
-  if (remainingTime === null) return null;
 
   return (
     <div className="flex items-center gap-2">

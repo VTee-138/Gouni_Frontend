@@ -47,7 +47,7 @@ const ExamHistoryPage = () => {
              <div className="max-w-5xl mx-auto">
                 <button 
                     onClick={() => navigate(`/exam/${id}`)}
-                    className="flex items-center gap-2 text-gray-500 hover:text-blue-600 mb-6 transition-colors"
+                    className="flex items-center gap-2 text-gray-500 hover:text-red-600 mb-6 transition-colors"
                 >
                     <ArrowLeft className="w-5 h-5" /> 
                     Quay lại đề thi
@@ -61,7 +61,7 @@ const ExamHistoryPage = () => {
                          <p className="text-gray-600 text-lg">{examData.title?.text || examData.title}</p>
                      </div>
                      <div className="bg-white px-5 py-3 rounded-xl shadow-sm border border-gray-100 flex items-center gap-3">
-                         <div className="p-2 bg-blue-50 rounded-lg text-blue-600">
+                         <div className="p-2 bg-red-50 rounded-lg text-red-600">
                              <BarChart2 className="w-6 h-6" />
                          </div>
                          <div>
@@ -78,7 +78,7 @@ const ExamHistoryPage = () => {
                             <p className="text-lg">Bạn chưa làm bài thi này lần nào.</p>
                             <button 
                                 onClick={() => navigate(`/exam/test/${id}`)}
-                                className="mt-4 px-6 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition"
+                                className="mt-4 px-6 py-2 bg-red-600 text-white rounded-lg hover:bg-red-700 transition"
                             >
                                 Bắt đầu thi ngay
                             </button>
@@ -149,7 +149,7 @@ const ExamHistoryPage = () => {
                                                 <td className="p-4 text-right">
                                                     <button 
                                                         onClick={() => navigate(`/exam/result/${id}?resultId=${item._id}`)}
-                                                        className="inline-flex items-center gap-1 px-3 py-2 rounded-lg text-blue-600 hover:bg-blue-50 font-medium transition-colors text-sm"
+                                                        className="inline-flex items-center gap-1 px-3 py-2 rounded-lg text-red-600 hover:bg-red-50 font-medium transition-colors text-sm"
                                                     >
                                                         Xem lại <ChevronRight className="w-4 h-4" />
                                                     </button>
